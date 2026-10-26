@@ -1,1 +1,88 @@
-<p>inscricoes-lista works!</p>
+<app-evento-header />
+
+<main class="page">
+  @if (inscricaoService.aviso()) {
+    <div class="alert alert-warning">
+      <span>{{ inscricaoService.aviso() }}</span>
+
+      <button
+        type="button"
+        (click)="inscricaoService.limparAviso()"
+      >
+        Fechar
+      </button>
+    </div>
+  }
+
+  @if (mensagemErro) {
+    <div class="alert alert-error">
+      {{ mensagemErro }}
+    </div>
+  }
+
+  <section class="page-header">
+    <div>
+      <span class="eyebrow">
+        Participantes
+      </span>
+
+      <h2>Inscrições</h2>
+
+      <p>
+        Consulte e gerencie as inscrições da corrida.
+      </p>
+    </div>
+
+    <a
+      routerLink="/inscricoes/nova"
+      class="primary-button"
+    >
+      + Nova inscrição
+    </a>
+  </section>
+
+  @if (inscricaoService.inscricoesDetalhadas().length === 0) {
+    <section class="empty-state">
+      <div class="empty-icon">+</div>
+
+      <h3>Nenhuma inscrição cadastrada</h3>
+
+      <p>
+        Cadastre o primeiro participante da Corrida Solidária.
+      </p>
+
+      <a
+        routerLink="/inscricoes/nova"
+        class="primary-button"
+      >
+        Nova inscrição
+      </a>
+    </section>
+  } @else {
+    <section class="cards-grid">
+      @for (
+        inscricao of inscricaoService.inscricoesDetalhadas();
+        track inscricao.email
+      ) {
+        <app-inscricao-card
+          [inscricao]="inscricao"
+          (cancelar)="abrirCancelamento($event)"
+        />
+      }
+    </section>
+  }
+</main>
+
+<app-confirmacao-modal
+  [aberto]="inscricaoParaCancelar !== null"
+  titulo="Cancelar inscrição"
+  [mensagem]="
+    inscricaoParaCancelar
+      ? 'Deseja realmente cancelar a inscrição de ' +
+        inscricaoParaCancelar.nome +
+        '?'
+      : ''
+  "
+  (confirmar)="confirmarCancelamento()"
+  (fechar)="fecharCancelamento()"
+/>

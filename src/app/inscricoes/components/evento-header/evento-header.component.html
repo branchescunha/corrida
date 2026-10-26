@@ -1,0 +1,39 @@
+<p>evento-header works!</p>
+<header class="event-header">
+  <div class="event-container">
+    <div class="event-brand">
+      <div class="event-icon" aria-hidden="true">
+        ♥
+      </div>
+
+      <div>
+        <span class="event-edition">
+          5ª Corrida Solidária
+        </span>
+
+        <h1>Vila Esperança</h1>
+
+        <p>
+          Domingo, 14/03/2027 · Praça da Matriz · 7h
+        </p>
+      </div>
+    </div>
+
+    <div class="event-summary">
+      <div class="summary-item summary-total">
+        <span>Total</span>
+        <strong>{{ inscricaoService.total() }}</strong>
+      </div>
+
+      <div class="summary-item">
+        <span>5 km</span>
+        <strong>{{ inscricaoService.total5Km() }}</strong>
+      </div>
+
+      <div class="summary-item">
+        <span>10 km</span>
+        <strong>{{ inscricaoService.total10Km() }}</strong>
+      </div>
+    </div>
+  </div>
+</header>
