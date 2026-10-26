@@ -1,0 +1,40 @@
+@if (aberto) {
+  <div
+    class="modal-backdrop"
+    (click)="fechar.emit()"
+  >
+    <section
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="titulo"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="modal-icon">
+        !
+      </div>
+
+      <h2>{{ titulo }}</h2>
+
+      <p>{{ mensagem }}</p>
+
+      <div class="modal-actions">
+        <button
+          type="button"
+          class="button-secondary"
+          (click)="fechar.emit()"
+        >
+          Voltar
+        </button>
+
+        <button
+          type="button"
+          class="button-danger"
+          (click)="confirmar.emit()"
+        >
+          Confirmar cancelamento
+        </button>
+      </div>
+    </section>
+  </div>
+}

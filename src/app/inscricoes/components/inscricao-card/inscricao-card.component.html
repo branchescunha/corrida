@@ -1,0 +1,65 @@
+<article class="registration-card">
+  <div class="card-content">
+    <div class="card-header">
+      <div>
+        <h2>{{ inscricao.nome }}</h2>
+        <p>{{ inscricao.email }}</p>
+      </div>
+
+      <span
+        class="distance-badge"
+        [class.distance-10]="inscricao.distancia === 'KM_10'"
+      >
+        {{ formatarDistancia(inscricao.distancia) }}
+      </span>
+    </div>
+
+    <div class="card-information">
+      <p>
+        <span>Nascimento</span>
+        <strong>
+          {{ formatarData(inscricao.nascimento) }}
+        </strong>
+      </p>
+
+      <p>
+        <span>Idade na prova</span>
+        <strong>
+          {{ inscricao.idadeNaProva }} anos
+        </strong>
+      </p>
+
+      <p>
+        <span>Categoria</span>
+        <strong>
+          {{ formatarCategoria(inscricao.categoria) }}
+        </strong>
+      </p>
+    </div>
+  </div>
+
+  <footer class="card-actions">
+    <a
+      [routerLink]="['/inscricoes', inscricao.email]"
+    >
+      Detalhes
+    </a>
+
+    <a
+      [routerLink]="[
+        '/inscricoes',
+        inscricao.email,
+        'editar'
+      ]"
+    >
+      Editar
+    </a>
+
+    <button
+      type="button"
+      (click)="cancelar.emit(inscricao)"
+    >
+      Cancelar inscrição
+    </button>
+  </footer>
+</article>
