@@ -1,16 +1,39 @@
 .registration-card {
-  display: flex;
   min-width: 0;
+
+  display: flex;
   flex-direction: column;
+
   overflow: hidden;
+
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+
   background: var(--color-surface);
+
   box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.registration-card:hover {
+  transform: translateY(-2px);
+
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 35%,
+    var(--color-border)
+  );
+
+  box-shadow: var(--shadow-md);
 }
 
 .card-content {
   flex: 1;
+
   padding: 22px;
 }
 
@@ -18,6 +41,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
   gap: 16px;
 }
 
@@ -27,93 +51,135 @@
 
 .card-header h2 {
   margin: 0;
+
+  color: var(--color-text);
+
   font-size: 18px;
+  line-height: 1.35;
+
   overflow-wrap: anywhere;
 }
 
 .card-header p {
   margin: 5px 0 0;
+
   color: var(--color-text-muted);
+
   font-size: 14px;
+
   overflow-wrap: anywhere;
 }
 
 .distance-badge {
   flex-shrink: 0;
-  padding: 6px 10px;
+
+  padding: 6px 11px;
+
   border-radius: 999px;
-  color: #344054;
-  background: #eef2ff;
+
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+
   font-size: 12px;
   font-weight: 700;
 }
 
 .distance-10 {
-  color: #6941c6;
-  background: #f4ebff;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
 }
 
 .card-information {
   margin-top: 22px;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
   gap: 12px;
 }
 
 .card-information p {
+  min-width: 0;
+
   margin: 0;
 }
 
 .card-information span {
   display: block;
+
   margin-bottom: 4px;
+
   color: var(--color-text-muted);
+
   font-size: 12px;
 }
 
 .card-information strong {
+  color: var(--color-text);
+
   font-size: 14px;
+
+  overflow-wrap: anywhere;
 }
 
 .card-actions {
+  min-height: 54px;
+
   display: flex;
   align-items: center;
+
   gap: 18px;
+
   padding: 14px 22px;
+
   border-top: 1px solid var(--color-border);
-  background: var(--color-background);
+
+  background: var(--color-surface-muted);
 }
 
 .card-actions a,
 .card-actions button {
   border: 0;
+
   padding: 0;
+
   color: var(--color-primary);
   background: transparent;
+
   font: inherit;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
+
   cursor: pointer;
 }
 
 .card-actions button {
   margin-left: auto;
+
   color: var(--color-danger);
 }
 
 @media (max-width: 560px) {
+  .card-content {
+    padding: 19px;
+  }
+
   .card-information {
     grid-template-columns: 1fr;
   }
 
   .card-actions {
     flex-wrap: wrap;
+
+    padding: 14px 19px;
   }
 
   .card-actions button {
     width: 100%;
+
     margin-left: 0;
+
     text-align: left;
   }
 }

@@ -1,0 +1,27 @@
+<button
+  type="button"
+  class="theme-toggle"
+  (click)="themeService.alternar()"
+  [attr.aria-label]="
+    themeService.theme() === 'light'
+      ? 'Ativar tema escuro'
+      : 'Ativar tema claro'
+  "
+  [title]="
+    themeService.theme() === 'light'
+      ? 'Ativar tema escuro'
+      : 'Ativar tema claro'
+  "
+>
+  <span class="theme-toggle__icon" aria-hidden="true">
+    {{ themeService.theme() === 'light' ? '☾' : '☀' }}
+  </span>
+
+  <span class="theme-toggle__text">
+    {{
+      themeService.theme() === 'light'
+        ? 'Tema escuro'
+        : 'Tema claro'
+    }}
+  </span>
+</button>

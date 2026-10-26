@@ -1,25 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
+  color-scheme: light;
+
   --color-primary: #3157d5;
   --color-primary-hover: #2447bd;
+  --color-primary-soft: #eef2ff;
 
   --color-background: #f5f7fb;
   --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
 
   --color-text: #182230;
   --color-text-muted: #667085;
+
   --color-border: #e4e7ec;
 
   --color-success: #067647;
   --color-success-soft: #ecfdf3;
 
   --color-danger: #b42318;
+  --color-danger-soft: #fef3f2;
 
+  --color-warning: #93370d;
+  --color-warning-soft: #fffaeb;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
   --radius-lg: 14px;
 
   --shadow-sm:
     0 1px 2px rgb(16 24 40 / 5%),
     0 2px 8px rgb(16 24 40 / 4%);
+
+  --shadow-md:
+    0 4px 8px rgb(16 24 40 / 6%),
+    0 12px 24px rgb(16 24 40 / 8%);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-primary: #7894ff;
+  --color-primary-hover: #91a8ff;
+  --color-primary-soft: #202a4d;
+
+  --color-background: #10131a;
+  --color-surface: #181c24;
+  --color-surface-muted: #20252f;
+
+  --color-text: #f2f4f7;
+  --color-text-muted: #a7afbd;
+
+  --color-border: #303744;
+
+  --color-success: #75d6a2;
+  --color-success-soft: #17372a;
+
+  --color-danger: #ff8d87;
+  --color-danger-soft: #402220;
+
+  --color-warning: #fdbd74;
+  --color-warning-soft: #3c2e1e;
+
+  --shadow-sm:
+    0 1px 2px rgb(0 0 0 / 25%),
+    0 4px 12px rgb(0 0 0 / 16%);
+
+  --shadow-md:
+    0 8px 18px rgb(0 0 0 / 24%),
+    0 16px 32px rgb(0 0 0 / 18%);
 }
 
 * {
@@ -28,14 +76,17 @@
 
 html {
   min-width: 320px;
+  min-height: 100%;
   background: var(--color-background);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
+
   color: var(--color-text);
   background: var(--color-background);
+
   font-family:
     Inter,
     ui-sans-serif,
@@ -44,6 +95,20 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+input,
+select,
+button,
+a {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 button,
@@ -52,24 +117,25 @@ select {
   font: inherit;
 }
 
-a,
-button {
-  transition:
-    opacity 0.15s ease,
-    background 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.15s ease;
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:hover,
 button:hover {
-  opacity: 0.88;
+  opacity: 0.92;
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid rgb(49 87 213 / 20%);
+  outline: 3px solid rgb(99 124 255 / 25%);
   outline-offset: 2px;
+}
+
+::selection {
+  color: #ffffff;
+  background: var(--color-primary);
 }

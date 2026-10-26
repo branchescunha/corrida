@@ -1,0 +1,80 @@
+.theme-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 900;
+
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 9px 14px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+
+  color: var(--color-text);
+  background: var(--color-surface);
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow: var(--shadow-md);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--color-primary);
+
+  opacity: 1;
+}
+
+.theme-toggle__icon {
+  width: 24px;
+  height: 24px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+
+  font-size: 17px;
+}
+
+.theme-toggle__text {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .theme-toggle {
+    right: 14px;
+    bottom: 14px;
+
+    min-width: 46px;
+
+    padding: 9px 12px;
+  }
+
+  .theme-toggle__text {
+    display: none;
+  }
+}

@@ -1,18 +1,24 @@
 .loading {
+  min-height: 180px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 12px;
-  padding: 24px;
+
+  color: var(--color-text-muted);
 }
 
 .loading__spinner {
-  width: 24px;
-  height: 24px;
-  border: 3px solid #d1d5db;
-  border-top-color: #2563eb;
+  width: 26px;
+  height: 26px;
+
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+
+  animation: spin 0.75s linear infinite;
 }
 
 @keyframes spin {
