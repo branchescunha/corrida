@@ -1,0 +1,130 @@
+.form-page {
+  min-height: 100vh;
+  padding: 32px 16px;
+  background: #f4f6fa;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.form-header {
+  margin-bottom: 24px;
+}
+
+.form-header h1 {
+  margin: 0 0 8px;
+}
+
+.form-header p {
+  margin: 0;
+  color: #667085;
+}
+
+form,
+.not-found-message {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.field input:disabled {
+  background: #f2f4f7;
+  color: #667085;
+  cursor: not-allowed;
+}
+
+.field-error {
+  color: #b42318;
+}
+
+.field-help {
+  color: #667085;
+}
+
+.form-error {
+  margin-bottom: 20px;
+  padding: 12px;
+  color: #b42318;
+  background: #fef3f2;
+  border-radius: 8px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-primary {
+  border: 1px solid #3157d5;
+  color: #ffffff;
+  background: #3157d5;
+}
+
+.button-secondary {
+  border: 1px solid #d0d5dd;
+  color: #344054;
+  background: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .form-page {
+    padding: 20px 12px;
+  }
+
+  form,
+  .not-found-message {
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
