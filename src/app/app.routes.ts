@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+
 import { InscricaoDetalhes } from './inscricoes/pages/inscricao-detalhes/inscricao-detalhes.component';
 import { InscricaoForm } from './inscricoes/pages/inscricao-form/inscricao-form.component';
 import { InscricoesLista } from './inscricoes/pages/inscricoes-lista/inscricoes-lista.component';
