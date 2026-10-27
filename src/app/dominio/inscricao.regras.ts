@@ -1,3 +1,5 @@
+import { CORRIDA_CONFIG } from '../config/corrida.config';
+
 export type Distancia = 'KM_5' | 'KM_10';
 
 export type Categoria = 'JUVENIL' | 'ADULTO' | 'MASTER' | 'SENIOR';
@@ -13,7 +15,7 @@ export interface AvaliacaoInscricao {
   erro: ErroRegulamento | null;
 }
 
-export const DATA_PROVA = '2027-03-14';
+export const DATA_PROVA = CORRIDA_CONFIG.dataProva;
 
 export function normalizarEmail(email: string): string {
   return email.trim().toLowerCase();
