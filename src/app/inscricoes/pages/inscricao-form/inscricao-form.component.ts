@@ -11,6 +11,7 @@ import {
 } from '@angular/router';
 
 import { Distancia } from '../../../dominio/inscricao.regras';
+import { EventoHeader } from '../../components/evento-header/evento-header.component';
 import { InscricaoService } from '../../services/inscricao.service';
 import {
   emailValidator,
@@ -20,7 +21,11 @@ import {
 
 @Component({
   selector: 'app-inscricao-form',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    EventoHeader,
+  ],
   templateUrl: './inscricao-form.component.html',
   styleUrl: './inscricao-form.component.css',
 })
@@ -30,7 +35,9 @@ export class InscricaoForm {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
-  readonly emailOriginal = this.route.snapshot.paramMap.get('email');
+  readonly emailOriginal =
+    this.route.snapshot.paramMap.get('email');
+
   readonly modoEdicao = this.emailOriginal !== null;
 
   mensagemErro: string | null = null;
@@ -38,15 +45,22 @@ export class InscricaoForm {
 
   readonly form = this.fb.nonNullable.group({
     nome: ['', [Validators.required, nomeValidator]],
-    email: ['', [Validators.required, emailValidator]],
+
+    email: [
+      '',
+      [Validators.required, emailValidator],
+    ],
+
     nascimento: [
       '',
       [Validators.required, nascimentoValidator],
     ],
-    distancia: this.fb.nonNullable.control<Distancia | ''>(
-      '',
-      Validators.required,
-    ),
+
+    distancia:
+      this.fb.nonNullable.control<Distancia | ''>(
+        '',
+        Validators.required,
+      ),
   });
 
   constructor() {

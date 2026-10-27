@@ -13,15 +13,36 @@
       : 'Ativar tema claro'
   "
 >
-  <span class="theme-toggle__icon" aria-hidden="true">
-    {{ themeService.theme() === 'light' ? '☾' : '☀' }}
-  </span>
+  @if (themeService.theme() === 'light') {
+    <svg
+      class="theme-toggle__icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"
+      />
+    </svg>
+  } @else {
+    <svg
+      class="theme-toggle__icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+      />
 
-  <span class="theme-toggle__text">
-    {{
-      themeService.theme() === 'light'
-        ? 'Tema escuro'
-        : 'Tema claro'
-    }}
-  </span>
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.42 1.42" />
+      <path d="m17.65 17.65 1.42 1.42" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.35 17.65-1.42 1.42" />
+      <path d="m19.07 4.93-1.42 1.42" />
+    </svg>
+  }
 </button>

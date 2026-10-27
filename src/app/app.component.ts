@@ -14,14 +14,12 @@ import {
 } from '@angular/router';
 
 import { Loading } from './shared/loading/loading.component';
-import { ThemeToggle } from './shared/theme-toggle/theme-toggle.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
     Loading,
-    ThemeToggle,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

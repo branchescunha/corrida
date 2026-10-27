@@ -1,6 +1,11 @@
+<app-evento-header />
+
 <main class="form-page">
   <div class="form-container">
-    <a routerLink="/inscricoes" class="back-link">
+    <a
+      routerLink="/inscricoes"
+      class="back-link"
+    >
       ← Voltar para inscrições
     </a>
 
@@ -9,7 +14,8 @@
         <h1>Inscrição não encontrada</h1>
 
         <p>
-          Não foi possível localizar uma inscrição com o e-mail informado.
+          Não foi possível localizar uma inscrição
+          com o e-mail informado.
         </p>
 
         <a routerLink="/inscricoes">
@@ -19,7 +25,11 @@
     } @else {
       <header class="form-header">
         <h1>
-          {{ modoEdicao ? 'Editar inscrição' : 'Nova inscrição' }}
+          {{
+            modoEdicao
+              ? 'Editar inscrição'
+              : 'Nova inscrição'
+          }}
         </h1>
 
         <p>
@@ -37,7 +47,9 @@
         novalidate
       >
         <div class="field">
-          <label for="nome">Nome completo</label>
+          <label for="nome">
+            Nome completo
+          </label>
 
           <input
             id="nome"
@@ -58,16 +70,21 @@
 
           @if (
             form.controls.nome.touched &&
-            form.controls.nome.hasError('nomeInvalido')
+            form.controls.nome.hasError(
+              'nomeInvalido'
+            )
           ) {
             <small class="field-error">
-              O nome deve ter entre 3 e 100 caracteres.
+              O nome deve ter entre 3 e 100
+              caracteres.
             </small>
           }
         </div>
 
         <div class="field">
-          <label for="email">E-mail</label>
+          <label for="email">
+            E-mail
+          </label>
 
           <input
             id="email"
@@ -78,7 +95,8 @@
 
           @if (modoEdicao) {
             <small class="field-help">
-              O e-mail identifica a inscrição e não pode ser alterado.
+              O e-mail identifica a inscrição e não
+              pode ser alterado.
             </small>
           }
 
@@ -93,7 +111,9 @@
 
           @if (
             form.controls.email.touched &&
-            form.controls.email.hasError('emailInvalido')
+            form.controls.email.hasError(
+              'emailInvalido'
+            )
           ) {
             <small class="field-error">
               Informe um e-mail válido.
@@ -114,7 +134,9 @@
 
           @if (
             form.controls.nascimento.touched &&
-            form.controls.nascimento.hasError('required')
+            form.controls.nascimento.hasError(
+              'required'
+            )
           ) {
             <small class="field-error">
               Informe a data de nascimento.
@@ -128,13 +150,16 @@
             )
           ) {
             <small class="field-error">
-              A data de nascimento deve ser anterior a hoje.
+              A data de nascimento deve ser anterior
+              a hoje.
             </small>
           }
         </div>
 
         <div class="field">
-          <label for="distancia">Percurso</label>
+          <label for="distancia">
+            Percurso
+          </label>
 
           <select
             id="distancia"
@@ -144,13 +169,20 @@
               Selecione um percurso
             </option>
 
-            <option value="KM_5">5 km</option>
-            <option value="KM_10">10 km</option>
+            <option value="KM_5">
+              5 km
+            </option>
+
+            <option value="KM_10">
+              10 km
+            </option>
           </select>
 
           @if (
             form.controls.distancia.touched &&
-            form.controls.distancia.hasError('required')
+            form.controls.distancia.hasError(
+              'required'
+            )
           ) {
             <small class="field-error">
               Selecione o percurso.
@@ -159,7 +191,10 @@
         </div>
 
         @if (mensagemErro) {
-          <div class="form-error" role="alert">
+          <div
+            class="form-error"
+            role="alert"
+          >
             {{ mensagemErro }}
           </div>
         }
@@ -176,7 +211,11 @@
             type="submit"
             class="button button-primary"
           >
-            {{ modoEdicao ? 'Salvar alterações' : 'Cadastrar' }}
+            {{
+              modoEdicao
+                ? 'Salvar alterações'
+                : 'Cadastrar'
+            }}
           </button>
         </div>
       </form>

@@ -16,15 +16,20 @@
 
   @if (mensagemErro) {
     <div class="alert alert-error">
-      {{ mensagemErro }}
+      <span>{{ mensagemErro }}</span>
+
+      <button
+        type="button"
+        (click)="mensagemErro = null"
+      >
+        Fechar
+      </button>
     </div>
   }
 
   <section class="page-header">
     <div>
-      <span class="eyebrow">
-        Participantes
-      </span>
+      <p class="eyebrow">Participantes</p>
 
       <h2>Inscrições</h2>
 
@@ -34,16 +39,16 @@
     </div>
 
     <a
-      routerLink="/inscricoes/nova"
       class="primary-button"
+      routerLink="/inscricoes/nova"
     >
       + Nova inscrição
     </a>
   </section>
 
-  @if (inscricaoService.inscricoesDetalhadas().length === 0) {
+  @if (inscricaoService.total() === 0) {
     <section class="empty-state">
-      <div class="empty-icon">+</div>
+      <div class="empty-state__icon" aria-hidden="true">+</div>
 
       <h3>Nenhuma inscrição cadastrada</h3>
 
@@ -52,30 +57,74 @@
       </p>
 
       <a
-        routerLink="/inscricoes/nova"
         class="primary-button"
+        routerLink="/inscricoes/nova"
       >
         Nova inscrição
       </a>
     </section>
   } @else {
-    <section class="cards-grid">
-      @for (
-        inscricao of inscricaoService.inscricoesDetalhadas();
-        track inscricao.email
-      ) {
-        <app-inscricao-card
-          [inscricao]="inscricao"
-          (cancelar)="abrirCancelamento($event)"
-        />
-      }
-    </section>
+    <nav
+      class="filters"
+      aria-label="Filtrar inscrições por percurso"
+    >
+      <button
+        type="button"
+        class="filter-button"
+        [class.filter-button--active]="filtro() === 'TODOS'"
+        [attr.aria-pressed]="filtro() === 'TODOS'"
+        (click)="selecionarFiltro('TODOS')"
+      >
+        Todos
+        <strong>{{ inscricaoService.total() }}</strong>
+      </button>
+
+      <button
+        type="button"
+        class="filter-button"
+        [class.filter-button--active]="filtro() === 'KM_5'"
+        [attr.aria-pressed]="filtro() === 'KM_5'"
+        (click)="selecionarFiltro('KM_5')"
+      >
+        5 km
+        <strong>{{ inscricaoService.total5Km() }}</strong>
+      </button>
+
+      <button
+        type="button"
+        class="filter-button"
+        [class.filter-button--active]="filtro() === 'KM_10'"
+        [attr.aria-pressed]="filtro() === 'KM_10'"
+        (click)="selecionarFiltro('KM_10')"
+      >
+        10 km
+        <strong>{{ inscricaoService.total10Km() }}</strong>
+      </button>
+    </nav>
+
+    @if (inscricoesFiltradas().length === 0) {
+      <section class="filter-empty">
+        <h3>Nenhuma inscrição neste percurso</h3>
+        <p>Selecione outro filtro para visualizar os participantes.</p>
+      </section>
+    } @else {
+      <section class="cards-grid">
+        @for (
+          inscricao of inscricoesFiltradas();
+          track inscricao.email
+        ) {
+          <app-inscricao-card
+            [inscricao]="inscricao"
+            (cancelar)="abrirCancelamento($event)"
+          />
+        }
+      </section>
+    }
   }
 </main>
 
 <app-confirmacao-modal
   [aberto]="inscricaoParaCancelar !== null"
-  titulo="Cancelar inscrição"
   [mensagem]="
     inscricaoParaCancelar
       ? 'Deseja realmente cancelar a inscrição de ' +
